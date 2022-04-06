@@ -1,0 +1,17 @@
+#git
+FROM alpine/git as repo
+
+MAINTAINER krishna.barnela@gmail.com
+
+WORKDIR /app
+RUN git clone https://github.com/barnelakrishna/HelloWorld.git
+
+#Maven
+FROM maven:3.5-jdk-8-alpine as build
+WORKDIR /app
+COPY --from=repo /app/HelloWorld  /app 
+RUN mvn install
+
+#Tomcat
+FROM tomcat:8.0.20-jre8
+COPY --from=build /app/target/HelloWorld*.war /usr/local/tomcat/webapps/HelloWorld.war
