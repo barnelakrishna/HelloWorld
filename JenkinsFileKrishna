@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage('CheckOutCode'){
             steps{
-                git branch: 'devlopment', credentialsId: '40de6d70-6950-4e26-a985-2a8e13c20a40', url: 'https://github.com/barnelakrishna/HelloWorld.git'
+                git credentialsId: '40de6d70-6950-4e26-a985-2a8e13c20a40', url: 'https://github.com/barnelakrishna/HelloWorld.git'
             }
         }
         
