@@ -10,6 +10,8 @@ services:
     - MONGO_DB_PASSWORD=devdb@123
     networks:
     - springappoverlay
+    deploy:
+     replicas: 2
 
   mongo:
     image: mongo
