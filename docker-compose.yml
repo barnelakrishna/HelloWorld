@@ -1,0 +1,29 @@
+version: "3"
+services:
+  springapp:
+    image: 7618/spring-boot-mango:1
+    ports:
+    - 8080:8080
+    environment:
+    - MONGO_DB_HOSTNAME=mongo
+    - MONGO_DB_USERNAME=devdb
+    - MONGO_DB_PASSWORD=devdb@123
+    networks:
+    - springappoverlay
+
+  mongo:
+    image: mongo
+    volumes:
+    - mongovol:/data/db
+    environment:
+    - MONGO_INITDB_ROOT_USERNAME=devdb
+    - MONGO_INITDB_ROOT_PASSWORD=devdb@123
+    networks:
+    - springappoverlay
+volumes:
+  mongovol:
+    external: true
+
+networks:
+  springappoverlay:
+    external: true
