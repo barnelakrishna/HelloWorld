@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/openjdk:11-jdk-buster
+      - image: circleci/openjdk:11
     steps:
       - checkout
       - run: mvn clean
