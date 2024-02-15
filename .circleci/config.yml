@@ -5,6 +5,7 @@ jobs:
       - image: circleci/python:3.9  # Use a CircleCI-provided Python image as a base
     steps:
       - checkout  # Check out your code from the repository
+      - setup_remote_docker
       - run:
           name: Build and push image
           command: |
